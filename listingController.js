@@ -20,15 +20,18 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       })
       $scope.newEntry.code ="";
       $scope.newEntry.name ="";
-      $scope.newEntry.coordinates = "";
+      $scope.newEntry.coordinates.latitude = 0;
+      $scope.newEntry.coordinates.longitude = 0;
       $scope.newEntry.address = "";
     };
+
+
     $scope.deleteListing = function(index) {
       $scope.listings.splice(index, 1);
     };
 
-    $scope.showDetails = function(index) {
-      $scope.detailedInfo = Listings[index];
+    $scope.showDetails = function(building) {
+      $scope.detailedInfo = $scope.listings[$scope.listings.indexOf(building)];
     };
   }
 ]);

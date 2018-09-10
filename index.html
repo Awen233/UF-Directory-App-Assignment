@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/solar/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
   </head>
   <body ng-app="directoryApp">
@@ -22,26 +22,43 @@
                 <th>Building Name</th>
                 <th></th>
               </tr>
-              <tr ng-repeat = "building in listings | filter: selectBuilding">
+              <tr ng-repeat = "building in listings | filter: selectBuilding"  ng-click="showDetails(building)">
                   <td>{{ building.code}} </td>
                   <td>{{ building.name}} </td>
-                  <td ng-click = "showDetails($index)"> showDetail </td>
-                  <td class = "remove" ng-click = "deleteListing($index)"> x </td>
+                  <td><button type="button" class="btn btn-info" ng-click="showDetails(building)">showDetails</button> </td>
+                  <td><button type="button" class="btn btn-danger" ng-click="deleteListing($index)">Delete</button></td>
               </tr>
             </table>
           </div>
+          <br/>
+
           <form ng-submit = "addListing()">
-            <input type = "text" placeholder="code" ng-model = "newEntry.code" >
-            <input type = "text" placeholder="name" ng-model = "newEntry.name" >
-            <input type = "text" placeholder="latitude" ng-model = "newEntry.coordinates.latitude" >
-            <input type = "text" placeholder="longitude" ng-model = "newEntry.coordinates.longitude">
-            <input type = "text" placeholder="address" ng-model = "newEntry.address">
-            <input type = "submit" value = "add new entry"/>
+          <div class = "form-group">
+            <label>code     </label>
+            <input type = "text" placeholder="code" ng-model = "newEntry.code" class = "form-control">
+          </div>
+          <div class = "form-group">
+            <label>name     </label>
+            <input type = "text" placeholder="name" ng-model = "newEntry.name" class = "form-control">
+          </div>
+          <div class = "form-group">
+            <label>latitude </label>
+            <input type = "text" placeholder="latitude" ng-model = "newEntry.coordinates.latitude" class = "form-control">
+          </div>
+          <div>
+            <label>longitude</label>
+            <input type = "text" placeholder="longitude" ng-model = "newEntry.coordinates.longitude" class = "form-control">
+          </div>
+          <div>
+            <label>address  </label>
+            <input type = "text" placeholder="address" ng-model = "newEntry.address" class = "form-control">
+          </div>
+            <button type = "submit" class = "btn btn-success">submit</button>
           </form>
         </div>
         <div class="col-md-6">
           <div class="jumbotron">
-            <h2>Detailed Information</h2>
+            <h2 class = "changeColor">Detailed Information</h2>
             <tr>
             {{ detailedInfo.code}}
             {{ detailedInfo.name}} <br/>
