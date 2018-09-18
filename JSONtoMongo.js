@@ -1,4 +1,7 @@
 'use strict';
+// this is the uri:
+// mongodb://<dbuser>:<dbpassword>@ds117539.mlab.com:17539/uf_web
+// I create the user CEN3031 with the dbpassword CEN3031TA
 /*
   Import modules/files you may need to correctly run the script.
   Make sure to save your DB's uri in the config file, then import it with a require statement!
